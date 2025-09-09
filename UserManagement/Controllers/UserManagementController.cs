@@ -47,11 +47,6 @@ public class UserManagementController : ControllerBase
     [HttpGet("groups")]
     public async Task<IActionResult> GetAllGroupsWithPagination([FromQuery] int offset = 0, [FromQuery] int limit = 10)
     {
-        if (offset < 0 || limit < 1)
-        {
-            return BadRequest(new { message = "limit and offset must be >= 1" });
-        }
-        
         try
         {   
             var groups = await _groupService.GetGroups(offset, limit);
