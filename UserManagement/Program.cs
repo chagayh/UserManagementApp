@@ -16,7 +16,6 @@ public class Program
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddControllers()
             .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
-        builder.Services.AddHttpClient();
 
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IGroupService, GroupService>();
